@@ -8,7 +8,9 @@ import {
   UtensilsCrossed, 
   Search,
   Bell,
-  User
+  User,
+  Package,
+  ArrowLeftRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,9 +20,11 @@ const Navigation = () => {
   const navItems = [
     { path: "/", label: "Home", icon: Home },
     { path: "/todo", label: "To-Do", icon: CheckSquare },
-    { path: "/teach", label: "Learn", icon: BookOpen },
+    { path: "/teach", label: "Teach", icon: BookOpen },
     { path: "/leaderboard", label: "Ranks", icon: Trophy },
     { path: "/lunch", label: "Lunch", icon: UtensilsCrossed },
+    { path: "/lostfound", label: "Lost&Found", icon: Package },
+    { path: "/skill-exchange", label: "Skills", icon: ArrowLeftRight },
   ];
 
   return (
@@ -65,13 +69,17 @@ const Navigation = () => {
             <Button variant="ghost" size="icon" className="hidden sm:flex">
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
+            <Link to="/notifications">
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="h-5 w-5" />
+                <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger" />
+              </Button>
+            </Link>
+            <Link to="/profile">
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
 
