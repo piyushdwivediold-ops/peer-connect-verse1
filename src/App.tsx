@@ -3,46 +3,39 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { CartProvider } from "@/context/CartContext";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Todo from "./pages/Todo";
-import Teach from "./pages/Teach";
-import Leaderboard from "./pages/Leaderboard";
-import Lunch from "./pages/Lunch";
-import LostFound from "./pages/LostFound";
-import SkillExchange from "./pages/SkillExchange";
-import Profile from "./pages/Profile";
-import Notifications from "./pages/Notifications";
+import Shop from "./pages/Shop";
+import ProductDetail from "./pages/ProductDetail";
+import About from "./pages/About";
+import Cart from "./pages/Cart";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import FloatingActionButton from "./components/FloatingActionButton";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navigation />
-        <AnimatePresence mode="wait">
+      <CartProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/todo" element={<Todo />} />
-            <Route path="/teach" element={<Teach />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/lunch" element={<Lunch />} />
-            <Route path="/lostfound" element={<LostFound />} />
-            <Route path="/skill-exchange" element={<SkillExchange />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/notifications" element={<Notifications />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </AnimatePresence>
-        <FloatingActionButton />
-      </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+      </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
