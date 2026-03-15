@@ -1,5 +1,4 @@
-# Welcome to our project
-
+# Welcome to your Lovable project
 
 ## Project info
 
